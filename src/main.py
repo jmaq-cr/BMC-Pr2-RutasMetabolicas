@@ -1,10 +1,10 @@
-
 import json
 from os import walk
 import string
 import pprint
 from collections import OrderedDict
 from graph import *
+
 
 # load filenames from metabolic-pathways folder
 pathways = []

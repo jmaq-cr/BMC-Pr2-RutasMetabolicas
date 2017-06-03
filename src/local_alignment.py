@@ -1,6 +1,7 @@
 import global_alignment
 import numpy as np
 
+
 def fill_matrix(sequence1, sequence2):
      sequence1 = global_alignment.insert_gap(sequence1, 0)
      sequence2 = global_alignment.insert_gap(sequence2, 0)
@@ -17,6 +18,7 @@ def fill_matrix(sequence1, sequence2):
              diagonal = global_alignment.matrix[i-1][j-1] + global_alignment.getScore(sequence1, sequence2, i, j)
  
              global_alignment.matrix[i][j] = max(up, left, diagonal, 0)
+
 
 # CONSTRUYE EL ALINEAMIENTO OPTIMO CON LOS PUNTAJES DE LA MATRIZ
 def traceback(sequence1, sequence2):

@@ -1,6 +1,7 @@
 import numpy as np
 import global_alignment
 
+
 # LLENA LA PRIMER FILA Y LA PRIMER COLUMNA DE LA MATRIZ CON LOS VALORES CORRESPONDIENTES
 def fill_first_values():
     # FILL FIRST ROW

@@ -1,5 +1,6 @@
 from collections import deque
 
+
 class Node:
     """ Node data structure """
     def __init__(self, value):
@@ -24,6 +25,7 @@ class Node:
 
     def __hash__(self):
         return len(self.value)
+
 
 class Graph:
     """ Directed Graph data structure """
@@ -72,7 +74,15 @@ class Graph:
         """ Breadth First Path """
         if not self.nodes:
             return []
-        start = self.nodes[0]
+
+        result = []
+        star = False
+        if '*' in self.nodes:
+            star = True
+            start = self.nodes[self.nodes.index('*')]
+        else:
+            start = self.nodes[0]
+        
         visited, queue, result = set([start]), deque([start]), []
         while queue:
             node = queue.popleft()
@@ -81,13 +91,21 @@ class Graph:
                 if nd not in visited:
                     queue.append(nd)
                     visited.add(nd)
-        return result
+    
+        return result[1:] if star else result
 
     def depth_first_path(self):
         """ Depth First Path """
         if not self.nodes:
             return []
-        start = self.nodes[0]
+
+        result = []
+        star = False
+        if '*' in self.nodes:
+            star = True
+            start = self.nodes[self.nodes.index('*')]
+        else:
+            start = self.nodes[0]
         visited, stack, result = set([start]), [start], []
         while stack:
             node = stack.pop()
@@ -96,7 +114,8 @@ class Graph:
                 if nd not in visited:
                     stack.append(nd)
                     visited.add(nd)
-        return result
+
+        return result[1:] if star else result
 
     def generate_dict(self):
         dict = {}
@@ -115,3 +134,8 @@ def to_graph_from_dict(dict):
         for node2 in edges:
             graph.add_edge(node1, node2)  
     return graph
+
+
+if __name__ == '__main__':
+    print(to_graph_from_dict({"hola":["a","b"], "a":["c"]}).depth_first_path())
+    print(to_graph_from_dict({"hola":["a","c","b"], "a":["c"],"c":["d"]}).depth_first_path())
