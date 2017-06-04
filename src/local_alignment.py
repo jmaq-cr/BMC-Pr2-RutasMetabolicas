@@ -1,6 +1,8 @@
 import global_alignment
 import numpy as np
-
+MISMATCH = -1
+MATCH = 1
+GAP = -2
 
 def fill_matrix(sequence1, sequence2):
      sequence1 = global_alignment.insert_gap(sequence1, 0)

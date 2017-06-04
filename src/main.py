@@ -4,7 +4,9 @@ import string
 import pprint
 from collections import OrderedDict
 from graph import *
-
+from global_alignment import *
+from local_alignment import *
+from semiglobal_alignment import *
 
 # load filenames from metabolic-pathways folder
 pathways = []
@@ -126,3 +128,23 @@ if __name__ == '__main__':
     print  
     
     show_dictionary()
+
+    arr0 = []
+    arr1 = []
+
+    for i in bfs0:
+        for key, value in dictionary.iteritems():
+            if key == i:
+                arr0.append(value)
+
+    for i in bfs1:
+        for key, value in dictionary.iteritems():
+            if key == i:
+                arr1.append(value)
+
+    print arr0
+    print arr1
+
+    print needleman_wunsch(arr0, arr1)
+    print local_alignment(arr0, arr1)
+    print semiglobal_alignment(arr0, arr1)
