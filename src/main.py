@@ -104,10 +104,10 @@ if __name__ == '__main__':
     print "Breadth First Paths"
     if detail:     
         print pathways[pathway0]
-        pprint.pprint(bfs0)
+        print bfs0
         print
         print pathways[pathway1]
-        pprint.pprint(bfs1)
+        print bfs1
     else:
         print pathways[pathway0]
         print renamed_path(bfs0)
@@ -142,9 +142,9 @@ if __name__ == '__main__':
             if key == i:
                 arr1.append(value)
 
-    print arr0
-    print arr1
-
+    print "Global"
     print needleman_wunsch(arr0, arr1)
+    print "Local"
     print local_alignment(arr0, arr1)
+    print "Semiglobal"
     print semiglobal_alignment(arr0, arr1)
